@@ -17,7 +17,10 @@ app.config(function($stateProvider, $urlRouterProvider) {
 
 app.controller('rootCtrl', function($state) {
     var appCtrl = this;
-    appCtrl.serviceTypes = [{id: "product", type: "Products"}, {id: "atm", type: "ATM's"}, {id: "branch", type: "Branches"}, {id: "label", type: "Labels"}];
+    appCtrl.config = {
+    	"baseURI": "http://127.0.0.1:3000/pwa/"
+    }
+    appCtrl.serviceTypes = [{ id: "product", type: "Products" }, { id: "atm", type: "ATM's" }, { id: "branch", type: "Branches" }, { id: "label", type: "Labels" }];
     appCtrl.init = function() {
         appCtrl.display = true;
         appCtrl.appCredentials = {
@@ -34,15 +37,9 @@ app.controller('rootCtrl', function($state) {
         }
     }
 
-    var branchApi = 'https://crossorigin.me/https://apis-bank-test.apigee.net/apis/v2/locations/branches';
-
     appCtrl.fetchServiceData = function(type) {
-        fetch(branchApi, {
-                header: {
-                    'Access-Control-Allow-Origin': '*',
-                    mode: 'cors',
-                    origin:'http://127.0.0.1:8080'
-                }
+        fetch(appCtrl.config.baseURI+ "services/"+ type, {
+                header: {}
             })
             .then(function(response) {
                 return response.json();
