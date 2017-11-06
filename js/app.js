@@ -45,6 +45,7 @@ app.controller('rootCtrl', function($state) {
                 return response.json();
             })
             .then(function(data) {
+                appCtrl.data = data.data;
                 console.log(data);
             })
     }

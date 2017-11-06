@@ -7,149 +7,62 @@
           <h4>{{service.type}}</h4>
         </div>
       </div>
-      <!-- <h2 class="sub-header">Section title</h2>
-      <div class="table-responsive">
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Header</th>
-              <th>Header</th>
-              <th>Header</th>
-              <th>Header</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>1,001</td>
-              <td>Lorem</td>
-              <td>ipsum</td>
-              <td>dolor</td>
-              <td>sit</td>
-            </tr>
-            <tr>
-              <td>1,002</td>
-              <td>amet</td>
-              <td>consectetur</td>
-              <td>adipiscing</td>
-              <td>elit</td>
-            </tr>
-            <tr>
-              <td>1,003</td>
-              <td>Integer</td>
-              <td>nec</td>
-              <td>odio</td>
-              <td>Praesent</td>
-            </tr>
-            <tr>
-              <td>1,003</td>
-              <td>libero</td>
-              <td>Sed</td>
-              <td>cursus</td>
-              <td>ante</td>
-            </tr>
-            <tr>
-              <td>1,004</td>
-              <td>dapibus</td>
-              <td>diam</td>
-              <td>Sed</td>
-              <td>nisi</td>
-            </tr>
-            <tr>
-              <td>1,005</td>
-              <td>Nulla</td>
-              <td>quis</td>
-              <td>sem</td>
-              <td>at</td>
-            </tr>
-            <tr>
-              <td>1,006</td>
-              <td>nibh</td>
-              <td>elementum</td>
-              <td>imperdiet</td>
-              <td>Duis</td>
-            </tr>
-            <tr>
-              <td>1,007</td>
-              <td>sagittis</td>
-              <td>ipsum</td>
-              <td>Praesent</td>
-              <td>mauris</td>
-            </tr>
-            <tr>
-              <td>1,008</td>
-              <td>Fusce</td>
-              <td>nec</td>
-              <td>tellus</td>
-              <td>sed</td>
-            </tr>
-            <tr>
-              <td>1,009</td>
-              <td>augue</td>
-              <td>semper</td>
-              <td>porta</td>
-              <td>Mauris</td>
-            </tr>
-            <tr>
-              <td>1,010</td>
-              <td>massa</td>
-              <td>Vestibulum</td>
-              <td>lacinia</td>
-              <td>arcu</td>
-            </tr>
-            <tr>
-              <td>1,011</td>
-              <td>eget</td>
-              <td>nulla</td>
-              <td>Class</td>
-              <td>aptent</td>
-            </tr>
-            <tr>
-              <td>1,012</td>
-              <td>taciti</td>
-              <td>sociosqu</td>
-              <td>ad</td>
-              <td>litora</td>
-            </tr>
-            <tr>
-              <td>1,013</td>
-              <td>torquent</td>
-              <td>per</td>
-              <td>conubia</td>
-              <td>nostra</td>
-            </tr>
-            <tr>
-              <td>1,014</td>
-              <td>per</td>
-              <td>inceptos</td>
-              <td>himenaeos</td>
-              <td>Curabitur</td>
-            </tr>
-            <tr>
-              <td>1,015</td>
-              <td>sodales</td>
-              <td>ligula</td>
-              <td>in</td>
-              <td>libero</td>
-            </tr>
-          </tbody>
-        </table>
-      </div> -->
       <div class="data-section-product col-md-12">
         <!-- Dynamic Data to load here -->
         <h2 class="sub-header">Products</h2>
         <div class="row">
           <div class="col-md-12">
             <div class="card">
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Category</th>
+                        <th scope="col">Sub-Category</th>
+                        <th scope="col">Product Name</th>
+                        <th scope="col">Rate of Interest</th>
+                        <th scope="col">Maximum Tenure</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {{appCtrl.data}}
+                      <tr ng-repeat="product in appCtrl.data">
+                        {{appCtrl.data}}
+                        <td>{{product.Category}}</td>
+                        <td>{{product.Sub-Category}}</td>
+                        <td>{{product.Text}}</td>
+                        <td>{{product.More-info.Rate-of-interest}}</td>
+                        <td>{{product.More-info.Maximum-tenure}}</td>
+                      </tr>
+                    </tbody>
+                 </table>   
             </div>
           </div>
         </div>
       </div>
       <div class="data-section-Atm col-md-12">
-        <h2 class="sub-header">ATM's</h2>
+        <h2 class="sub-header">ING ATM's</h2>
         <div class="row">
           <div class="col-md-12">
             <div class="card">
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">House No.</th>
+                        <th scope="col">Street</th>
+                        <th scope="col">City</th>
+                        <th scope="col">Postol Code</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <tr></tr>
+                        <tr></tr>
+                        <tr></tr>
+                        <tr></tr>
+                        <tr></tr>
+                      </tr>
+                    </tbody>
+                 </table>
             </div>
           </div>
         </div>
@@ -159,6 +72,26 @@
         <div class="row">
           <div class="col-md-12">
             <div class="card">
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Branch Name</th>
+                        <th scope="col">Branch Type</th>
+                        <th scope="col">Branch Identification</th>
+                        <th scope="col">Telephone</th>
+                        <th scope="col">Customers</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <tr></tr>
+                        <tr></tr>
+                        <tr></tr>
+                        <tr></tr>
+                        <tr></tr>
+                      </tr>
+                    </tbody>
+                 </table>
             </div>
           </div>
         </div>        
