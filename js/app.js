@@ -17,8 +17,13 @@ app.config(function($stateProvider, $urlRouterProvider) {
 
 app.controller('rootCtrl', function($state) {
     var appCtrl = this;
+    appCtrl.dispProp = {
+        product: true,
+        atm: false,
+        branch: false,
+    }
     appCtrl.config = {
-    	"baseURI": "http://127.0.0.1:3000/bankapi/"
+        "baseURI": "http://127.0.0.1:3000/bankapi/"
     }
     appCtrl.serviceTypes = [{ id: "product", type: "Products" }, { id: "atm", type: "ATM's" }, { id: "branch", type: "Branches" }, { id: "label", type: "Labels" }];
     appCtrl.init = function() {
@@ -38,7 +43,9 @@ app.controller('rootCtrl', function($state) {
     }
 
     appCtrl.fetchServiceData = function(type) {
-        fetch(appCtrl.config.baseURI+ "services/"+ type, {
+        appCtrl.dispProp = {};
+        appCtrl.dispProp[type] = true;
+        fetch(appCtrl.config.baseURI + "services/" + type, {
                 header: {}
             })
             .then(function(response) {
