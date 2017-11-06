@@ -1,22 +1,10 @@
 <div class="container">
-  <div class="col-sm-12 col-md-12  main">
+  <div class="col-sm-12 col-md-12  main" >
     <h1 class="page-header">Dashboard</h1>
-      <div class="row placeholders">
-        <div class="col-xs-6 col-sm-3 placeholder">
+      <div class="row placeholders" data-ng-repeat="service in appCtrl.serviceTypes">
+        <div class="col-xs-6 col-sm-3 placeholder" data-ng-click="appCtrl.fetchServiceData(service.id)">
           <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-          <h4>Products</h4>
-        </div>
-        <div class="col-xs-6 col-sm-3 placeholder">
-          <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-          <h4>ATM's</h4>
-        </div>
-        <div class="col-xs-6 col-sm-3 placeholder" onclick="loadBranches()">
-          <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-          <h4>Branches</h4>
-        </div>
-        <div class="col-xs-6 col-sm-3 placeholder">
-          <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-          <h4>Label</h4> 
+          <h4>{{service.type}}</h4>
         </div>
       </div>
       <!-- <h2 class="sub-header">Section title</h2>

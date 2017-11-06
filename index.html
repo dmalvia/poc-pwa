@@ -18,7 +18,7 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    <link rel="apple-touch-icon" sizes="57x57" href="images/icons/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="57x57" href="images/icons/apple-icon-57x57.png">
 	<link rel="apple-touch-icon" sizes="60x60" href="images/icons/apple-icon-60x60.png">
 	<link rel="apple-touch-icon" sizes="72x72" href="images/icons/apple-icon-72x72.png">
 	<link rel="apple-touch-icon" sizes="76x76" href="images/icons/apple-icon-76x76.png">
@@ -36,7 +36,7 @@
 	<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
 	<meta name="theme-color" content="#ffffff">
   </head>
-  <body ng-controller="mainCtrl as mCtrl">
+  <body ng-controller="rootCtrl as appCtrl">
   	<nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
@@ -51,15 +51,15 @@
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
             <li class="active"><a href="#">Sign In</a></li>
-            <li ng-show="mCtrl.display"><a href="#dashboard">Dashboard</a></li>
+            <li ng-show="appCtrl.display"><a href="#dashboard">Dashboard</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
     </nav>
-    <div ng-view class=""></div>
+    <div ui-view class=""></div>
     <!-- Angularjs-->
     <script src="vendors/angular.js"></script>
-    <script src="vendors/angularRoute.js"></script>
+    <script src="vendors/angular-ui-router.min.js"></script>
     <script src="js/app.js"></script>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="vendors/jquery.js"></script>

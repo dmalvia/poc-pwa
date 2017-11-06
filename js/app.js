@@ -1,66 +1,56 @@
-var app = angular.module('pwa-app',['ngRoute']);
-app.config(function($routeProvider) {
-    $routeProvider
-    .when("/", {
-        templateUrl : "templates/login.html"
-    })
-    .when("/dashboard", {
-        templateUrl : "templates/dashboard.html"
-    })
-    .otherwise({redirectTo: '/'});
-});
-// app.run(function($rootScope,$location) {
-// 	$rootScope.$on("$locationChangeStart", function(event,next,current) {
-// 		if($rootScope.loginFlag) {
-// 			$location.path('/dashboard.html');
-// 			$rootScope.loginFlag = false;
-// 		}
-// 		else {
-// 			$location.path('');
-// 		}
-// 	});
-// })
+var app = angular.module('pwa-app', ['ui.router']);
+app.config(function($stateProvider, $urlRouterProvider) {
 
-
-app.controller('mainCtrl',function($location,$rootScope) {
-	var vm = this;
-	vm.init = function() {
-		vm.display = true;
-		vm.appCredentials = {
-			username : 'admin',
-			password : 'admin'
-		}
-	}
-
-	vm.login = function() {
-		if(vm.uName == vm.appCredentials.username && vm.uPass == vm.appCredentials.password) {
-			$rootScope.loginFlag = true;
-			//$location.path('/dashboard.html');
-			console.log("logged in successful");
-		}
-		else {
-			console.log("Invalid Credentials");
-		}
-	}
-
-	vm.init();
+    $urlRouterProvider.otherwise('/');
+    $stateProvider
+        .state('login', {
+            url: '/',
+            templateUrl: 'templates/login.html',
+            controller: 'rootCtrl as appCtrl',
+        })
+        .state('dashboard', {
+            url: '/dashboard',
+            templateUrl: 'templates/dashboard.html',
+            controller: 'rootCtrl as appCtrl',
+        });
 });
 
+app.controller('rootCtrl', function($state) {
+    var appCtrl = this;
+    appCtrl.serviceTypes = [{id: "product", type: "Products"}, {id: "atm", type: "ATM's"}, {id: "branch", type: "Branches"}, {id: "label", type: "Labels"}];
+    appCtrl.init = function() {
+        appCtrl.display = true;
+        appCtrl.appCredentials = {
+            username: 'admin',
+            password: 'admin'
+        }
+    }
 
+    appCtrl.login = function() {
+        if (appCtrl.uName == appCtrl.appCredentials.username && appCtrl.uPass == appCtrl.appCredentials.password) {
+            $state.go('dashboard', { 'type': 'branches', });
+        } else {
+            console.log("Invalid Credentials");
+        }
+    }
 
-var branchApi = 'https://apis-bank-test.apigee.net/apis/v2/locations/branches';
+    var branchApi = 'https://crossorigin.me/https://apis-bank-test.apigee.net/apis/v2/locations/branches';
 
-function loadBranches() {
-	fetch(branchApi, {
-		header : {
-			'Access-Control-Allow-Origin':'*',
-			mode:'cors'
-		}
-	})
-	.then(function(response) {
-		return response.json();
-	})
-	.then(function(data) {
-		console.log(data);
-	})	
-}
+    appCtrl.fetchServiceData = function(type) {
+        fetch(branchApi, {
+                header: {
+                    'Access-Control-Allow-Origin': '*',
+                    mode: 'cors',
+                    origin:'http://127.0.0.1:8080'
+                }
+            })
+            .then(function(response) {
+                return response.json();
+            })
+            .then(function(data) {
+                console.log(data);
+            })
+    }
+
+    appCtrl.init();
+});

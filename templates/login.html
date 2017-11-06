@@ -1,11 +1,11 @@
 <div class="loginbg">
   <div class="container mg-top">
-    <form class="form-signin" ng-submit="mCtrl.login()">
+    <form class="form-signin" ng-submit="appCtrl.login()">
       <h2 class="form-signin-heading">Please sign in</h2>
       <label for="inputEmail" class="sr-only">User Name</label>
-      <input type="text" ng-model="mCtrl.uName" id="inputEmail" class="form-control" placeholder="User Name" required="" autofocus="">
+      <input type="text" ng-model="appCtrl.uName" id="inputEmail" class="form-control" placeholder="User Name" required="" autofocus="">
       <label for="inputPassword" class="sr-only">Password</label>
-      <input type="password" ng-Model="mCtrl.uPass" id="inputPassword" class="form-control" placeholder="Password" required="">
+      <input type="password" ng-Model="appCtrl.uPass" id="inputPassword" class="form-control" placeholder="Password" required="">
       <div class="checkbox">
         <label>
           <input type="checkbox" value="remember-me"> Remember me
