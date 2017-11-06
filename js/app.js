@@ -18,7 +18,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
 app.controller('rootCtrl', function($state) {
     var appCtrl = this;
     appCtrl.config = {
-    	"baseURI": "http://127.0.0.1:3000/pwa/"
+    	"baseURI": "http://127.0.0.1:3000/bankapi/"
     }
     appCtrl.serviceTypes = [{ id: "product", type: "Products" }, { id: "atm", type: "ATM's" }, { id: "branch", type: "Branches" }, { id: "label", type: "Labels" }];
     appCtrl.init = function() {
