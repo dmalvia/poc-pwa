@@ -15,8 +15,9 @@ app.config(function($stateProvider, $urlRouterProvider) {
         });
 });
 
-app.controller('rootCtrl', function($state) {
+app.controller('rootCtrl', function($scope, $state) {
     var appCtrl = this;
+    // appCtrl.fetchServiceData('product');
     appCtrl.dispProp = {
         product: true,
         atm: false,
@@ -53,7 +54,7 @@ app.controller('rootCtrl', function($state) {
             })
             .then(function(data) {
                 appCtrl.data = data.data;
-                console.log(data);
+                $scope.$apply();
             })
     }
 
