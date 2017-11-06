@@ -18,6 +18,81 @@
 
 }
 
+.box {
+  width:100%;
+  max-height:200px;
+  height:100%;
+  display: table;
+  cursor:pointer;
+  box-shadow: 1px 2px 7px #bbb;
+}
+.box:hover span:last-child {
+  color:#fff;
+  -webkit-transition: background 0.8s,color 0.8s; /* Safari */
+  transition: background 0.8s,color 0.8s;
+}
+
+.box span {
+  -webkit-transition: background 1.5s,color 0.8s; /* Safari */
+  transition: background 1.5s,color 0.8s;
+}
+.box span:first-child {
+    height: 100px;
+    float: left;
+    width: 80px;
+}
+.box span:first-child .glyphicon {
+    color: #fff;
+    font-size: 30px;
+    vertical-align: middle;
+    line-height: 96px;
+}
+.box span:last-child {
+    display: table-cell;
+    vertical-align: middle;
+    font-size: 24px;
+    width: 100%;
+}
+.prod span:first-child,.prod:hover span:last-child {
+  background:#ff8a63;
+}
+.prod span:last-child {
+    color:#ff8a63;
+}
+.atm span:first-child,.atm:hover span:last-child {
+  background:#57bede;
+}
+.atm span:last-child {
+  color:#57bede;
+}
+.branch span:first-child,.branch:hover span:last-child {
+  background:#af9adb;
+}
+.branch span:last-child {
+  color:#af9adb;
+}
+.labelbx span:first-child,.labelbx:hover span:last-child {
+  background:#6dc7bc;
+}
+.labelbx span:last-child {
+  color:#6dc7bc;
+}
+
+
+/*Dynamic Sections*/
+
+.prod-section .glyphicon,.prod-section {
+  color:#ff8a63;
+}
+.atm-section .glyphicon,.atm-section {
+  color:#57bede;
+}
+.branch-section .glyphicon,.branch-section {
+  color:#af9adb;
+}
+.labelbx-section .glyphicon,.labelbx-section {
+  color:#6dc7bc;
+}
 /*Dashboard Css*/
 /*
  * Base structure
@@ -127,12 +202,38 @@ body {
 
 /*Card*/
 .card {
-	padding: 16px;
+  box-sizing: border-box;
+  background: #fff;
+  border-radius: 2px;
+  margin: 10px;
+  box-shadow: 0 2px 2;
+  padding:16px;
+}
+.atmcard {
     position: relative;
     box-sizing: border-box;
     background: #fff;
     border-radius: 2px;
-    margin: 16px;
+    margin: 10px;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    min-height: 202px;
+}
+.atmcard .citybg {
+  background:url("../images/city1.jpg") no-repeat;
+  height:110px;
+  position: relative;
+}
+.atmcard .citybg span {
+    position: absolute;
+    background: rgba(0,0,0,0.45);
+    height: 100%;
+    width: 100%;
+    color: #fff;
+    font-size: 20px;
+    text-align: center;
+    line-height: 110px;
+}
+.atmaddress {
+  padding:16px;
 }
 
