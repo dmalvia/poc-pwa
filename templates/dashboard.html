@@ -14,30 +14,33 @@
 
         <!-- Dynamic Data to load here -->
         <h2 class="prod-section sub-header"><span class="glyphicon glyphicon-gift" aria-hidden="true"></span>&nbsp;Products</h2>
-        <div class="row">
+        <div>
             <h4>Loans</h4>
-            <div class="col-sm-6 col-md-4 col-xs-12">
-              <div class="card"></div> 
+            <div class="col-sm-6 col-md-3 col-xs-12" ng-repeat="loan in appCtrl.data.loans">
+              <div class="card loans text-center">
+                <span class="glyphicon glyphicon-usd" aria-hidden="true"></span>
+                <h5>{{loan.Name}}</h5>
+              </div> 
             </div>
         </div>
-        <div class="row">
+        <div>
             <h4>Credit Cards</h4>
-            <div class="col-sm-6 col-md-6 col-xs-12">
-              <div class="card">  
+            <div class="col-sm-6 col-md-6 col-xs-12" ng-repeat="ccard in appCtrl.data.credit_card">
+              <div class="card ccard">  
               </div>
             </div>
         </div>
-        <div class="row">
+        <div>
             <h4>Banking</h4>
-            <div class="col-sm-6 col-md-6 col-xs-6">
-              <div class="card">  
+            <div class="col-sm-6 col-md-6 col-xs-6" ng-repeat="bank in appCtrl.data.banking">
+              <div class="card bank">  
               </div>
             </div>
         </div>
-        <div class="row">
+        <div>
             <h4>Investments</h4>
-            <div class="col-sm-12 col-md-12 col-xs-12">
-              <div class="card">  
+            <div class="col-sm-12 col-md-12 col-xs-12" ng-repeat="invest in appCtrl.data.investment">
+              <div class="card invest">  
               </div>
             </div>
         </div>
