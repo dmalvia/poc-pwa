@@ -34,6 +34,7 @@ app.controller('rootCtrl', function($scope, $state) {
             password: 'admin'
         };
         appCtrl.activeMenu = appCtrl.serviceTypes[0].type;
+        appCtrl.fetchServiceData('product');
     }
 
     appCtrl.setActive = function(menuItem) {
