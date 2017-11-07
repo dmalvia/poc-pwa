@@ -183,7 +183,6 @@ body {
   margin-top: 0;
 }
 
-
 /*
  * Placeholder dashboard ideas
  */
@@ -286,6 +285,34 @@ body {
 }
 .atmaddress {
   padding:16px;
+}
+
+/*Branches*/
+.branchimg >img  {
+  width:100%;
+}
+.bname {
+  color: #af9adb;
+    font-size: 22px;
+    margin-bottom: 1px;
+}
+.bidenti {
+  color:#aaa;
+}
+.baddress, .bservices {
+  color:#000;
+}
+.baddress .glyphicon-map-marker,.baddress .glyphicon-phone-alt {
+  color:#af9adb;
+  font-size: 22px;
+}
+.baddress .glyphicon-phone-alt {
+  font-size: 18px;
+}
+
+.csoon {
+  font-size:30px;
+  color:#6dc7bc;
 }
 
 /*.active {

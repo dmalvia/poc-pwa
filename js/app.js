@@ -22,6 +22,7 @@ app.controller('rootCtrl', function($scope, $state) {
         product: true,
         atm: false,
         branch: false,
+        label:false
     }
     appCtrl.config = {
         "baseURI": "http://127.0.0.1:3000/bankapi/"
