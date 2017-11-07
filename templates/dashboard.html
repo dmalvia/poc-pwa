@@ -14,33 +14,70 @@
 
         <!-- Dynamic Data to load here -->
         <h2 class="prod-section sub-header"><span class="glyphicon glyphicon-gift" aria-hidden="true"></span>&nbsp;Products</h2>
-        <div>
-            <h4>Loans</h4>
-            <div class="col-sm-6 col-md-3 col-xs-12" ng-repeat="loan in appCtrl.data.loans">
-              <div class="card loans text-center">
-                <span class="glyphicon glyphicon-usd" aria-hidden="true"></span>
-                <h5>{{loan.Name}}</h5>
+        <div class="all-prod">
+            <h4 class="Loans-title"><span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span>&nbsp;Loans</h4>
+            <div class="col-sm-6 col-md-4 col-xs-12 nopadding" ng-repeat="loan in appCtrl.data.loans">
+              <div class="card loans">
+                <div class="text-center">
+                  <span class="glyphicon glyphicon-usd" aria-hidden="true"></span>
+                </div>  
+                <h5 class="text-center">{{loan.Name}}</h5>
+                <hr>
+                <span><b>Loan Details :-</b></span>
+                <ul>
+                  <li>Max. Tenure - {{loan.More_info.Maximum_tenure}}</li>
+                  <li>Rate Of Interest - {{loan.More_info.Rate_of_interest}}</li>
+                 </ul>
               </div> 
             </div>
         </div>
-        <div>
-            <h4>Credit Cards</h4>
-            <div class="col-sm-6 col-md-6 col-xs-12" ng-repeat="ccard in appCtrl.data.credit_card">
-              <div class="card ccard">  
+        <div class="all-prod">
+            <h4 class="card-title"><span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span>&nbsp;Credit Cards</h4>
+            <div class="col-sm-4 col-md-4 col-xs-12 nopadding" ng-repeat="ccard in appCtrl.data.credit_card">
+              <div class="card ccard">
+                <div class="text-center"> 
+                  <span class="glyphicon glyphicon-credit-card" aria-hidden="true"></span>
+                </div>  
+                 <h5 class="text-center"><b>{{ccard.Name}}</b></h5>
+                 <hr>
+                 <span><b>Card Details :-</b></span>
+                 <ul>
+                  <li>Rewards - {{ccard.More_info.Rewards}}</li>
+                  <li>Conversion Rate - {{ccard.More_info.Rewards_conversion_rate}}</li>
+                  <li>Withdrawal Limit - {{ccard.More_info.Withdrawal_limits}}</li>
+                 </ul>
               </div>
             </div>
         </div>
-        <div>
-            <h4>Banking</h4>
-            <div class="col-sm-6 col-md-6 col-xs-6" ng-repeat="bank in appCtrl.data.banking">
-              <div class="card bank">  
+        <div class="all-prod">
+            <h4 class="bank-title"><span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span>&nbsp;Banking</h4>
+            <div class="col-sm-4 col-md-4 col-xs-12 nopadding" ng-repeat="bank in appCtrl.data.banking">
+              <div class="card bank">
+                <div class="text-center"> 
+                  <span class="glyphicon glyphicon-briefcase text-center" aria-hidden="true"></span>
+                </div>  
+                <h5 class="text-center"><b>{{bank.Name}}</b></h5>
+                 <hr> 
+                 <span><b>Account Details :-</b></span>
+                 <ul>
+                  <li>Rate Of Interest - {{bank.More_info.rate_of_interest}}</li>
+                 </ul>
               </div>
             </div>
         </div>
-        <div>
-            <h4>Investments</h4>
-            <div class="col-sm-12 col-md-12 col-xs-12" ng-repeat="invest in appCtrl.data.investment">
-              <div class="card invest">  
+        <div class="all-prod">
+            <h4 class="invest-title"><span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span>&nbsp;Investments</h4>
+            <div class="col-sm-4 col-md-4 col-xs-12 nopadding" ng-repeat="invest in appCtrl.data.investment">
+              <div class="card invest"> 
+                <div class="text-center"> 
+                  <span class="glyphicon glyphicon-erase text-center" aria-hidden="true"></span>
+                </div> 
+                <h5 class="text-center"><b>{{invest.Name}}</b></h5>
+                 <hr>
+                 <span>Interest Slabs</span> 
+                 <ul>
+                    <li ng-repeat="item in invest.More_info.Interest_slabs">Period - {{item.Text}} then ROI - {{item.Rate_of_interest}}</li>
+                 </ul>
               </div>
             </div>
         </div>
@@ -56,34 +93,22 @@
                   <div class="atmaddress">
                     <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>&nbsp;Address :- {{atm.address.housenumber}}, {{atm.address.postalcode}}, {{atm.address.street}}.
                     Latitude - {{atm.address.geoLocation.lat}}, Longitude - {{atm.address.geoLocation.lng}}
+                 </div>
                  </div> 
             </div>
         </div>
       </div>
-      <div ng-if = "appCtrl.dispProp.branch" class="data-section-branch">
+      <div ng-if="appCtrl.dispProp.branch" class="data-section-branch">
         <h2 class="branch-section sub-header"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>&nbsp;Branches</h2>
-        <div class="row">
-            <div class="card">
-                <table class="table">
-                    <thead>
-                      <tr>
-                        <th scope="col">Branch Name</th>
-                        <th scope="col">Branch Type</th>
-                        <th scope="col">Branch Identification</th>
-                        <th scope="col">Telephone</th>
-                        <th scope="col">Customers</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <tr></tr>
-                        <tr></tr>
-                        <tr></tr>
-                        <tr></tr>
-                        <tr></tr>
-                      </tr>
-                    </tbody>
-                 </table>
+        <div class="all-prod">
+            <div class="card all-prod" ng-repeat="branch in appCtrl.data">
+              <div class="col-md-6 col-xs-12 branchimg">
+                <img src="images/branch.jpg" alt="Branch"/>
+              </div>  
+              <div class="col-md-6 col-xs-12">
+                  {{branch.BranchName}}<br>
+                  {{branch.BranchIdentification}}
+              </div> 
             </div>
         </div>        
       </div>

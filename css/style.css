@@ -77,6 +77,9 @@
 .labelbx span:last-child {
   color:#6dc7bc;
 }
+.nopadding {
+  padding:0px !important;
+}
 
 
 /*Dynamic Sections*/
@@ -204,19 +207,59 @@ body {
 .card {
   box-sizing: border-box;
   background: #fff;
-  border-radius: 2px;
+  border-radius: 5px;
   margin: 10px;
   box-shadow: 0 2px 2;
   padding:16px;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+  color:#fafafa;
 }
 /* Products*/
   /*Loans*/
+  .all-prod {
+    overflow: hidden;
+  }
+  .Loans-title {
+    font-size:25px;
+    color:rgba(222,53,98,1);
+  }
+  .loans {
+    background: rgba(222,53,98,1);
+  }
+  .ccard {
+    background: #1690db;
+  }
+  .card-title {
+    font-size:25px;
+    color:#1690db;
+  }
 .loans .glyphicon-usd {
   font-size: 28px;
-  color:#ff8a63;
 }
-
+.data-section-product h4 {
+  margin-top:20px;
+}
+  /*Credit card*/
+.ccard .glyphicon-credit-card, .bank .glyphicon-briefcase,.invest .glyphicon-erase{
+  font-size: 28px;
+}
+.card h5 {
+  font-size:16px;
+}
+.bank-title {
+  font-size:25px;
+  color:#68c253;
+}
+.bank {
+  background:#68c253;
+}
+.invest-title {
+  font-size:25px;
+  color:#f57c20;
+}
+.invest {
+  background:#f57c20;
+}
 .atmcard {
     position: relative;
     box-sizing: border-box;
@@ -245,7 +288,7 @@ body {
   padding:16px;
 }
 
-.active {
+/*.active {
   background : red;
-}
+}*/
 
