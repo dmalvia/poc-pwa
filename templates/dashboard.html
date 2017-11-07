@@ -2,8 +2,8 @@
   <div class="col-sm-12 col-md-12  main" >
     <h1 class="page-header">Dashboard</h1>
       <div class="row placeholders">
-        <div class="col-xs-12 col-sm-3 placeholder" data-ng-repeat="service in appCtrl.serviceTypes" data-ng-click="appCtrl.fetchServiceData(service.id)">
-          <div class="{{service.class}}">
+        <div class="col-xs-12 col-sm-3 placeholder" data-ng-repeat="service in appCtrl.serviceTypes" data-ng-click="appCtrl.setActive(service.type); appCtrl.fetchServiceData(service.id)" ng-class="{active : appCtrl.activeMenu === service.type}">
+          <div class="{{service.class}}" >
               <span><span class="glyphicon glyphicon-{{service.icon}}" aria-hidden="true"></span></span>
               <span>{{service.type}}</span>
           </div>
