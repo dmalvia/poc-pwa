@@ -15,27 +15,14 @@ app.config(function($stateProvider, $urlRouterProvider) {
         });
 
     if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('/sw.js', { scope: '/' })
-            .then(function(registration) {
-                var serviceWorker;
-                if (registration.installing) {
-                    serviceWorker = registration.installing;
-                } else if (registration.waiting) {
-                    serviceWorker = registration.waiting;
-                } else if (registration.active) {
-                    serviceWorker = registration.active;
-                }
+        if (navigator.serviceWorker.controller) {
+            console.log('active service-worker found, deferring registration')
+        } else {
 
-                if (serviceWorker) {
-                    console.log("ServiceWorker phase:", serviceWorker.state);
-
-                    serviceWorker.addEventListener('statechange', function(e) {
-                        console.log("ServiceWorker phase:", e.target.state);
-                    });
-                }
-            }).catch(function(err) {
-                console.log('ServiceWorker registration failed: ', err);
+            navigator.serviceWorker.register('sw.js', { scope: './' }).then(function(reg) {
+                console.log('Service worker has been registered for scope:' + reg.scope);
             });
+        }
     }
 });
 
@@ -46,7 +33,7 @@ app.controller('rootCtrl', function($scope, $state) {
         product: true,
         atm: false,
         branch: false,
-        label:false
+        label: false
     }
     appCtrl.config = {
         "baseURI": "http://127.0.0.1:3000/bankapi/"

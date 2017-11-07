@@ -1,59 +1,78 @@
-// importScripts('./templates.js');
-// importScripts('./caches-polyfill.js');
+//This is the service worker with the Cache-first network
 
-var api = 'http://127.0.0.1:3000/bankapi/services/product';
-var templates = this.templates;
+var CACHE = 'app-precache';
+var precacheFiles = [
+    /* Add an array of files to precache for your app */
+    '/css/bootstrap.css',
+    '/css/style.css',
+    '/fonts/glyphicons-halflings-regular.eot',
+    '/fonts/glyphicons-halflings-regular.svg',
+    '/fonts/glyphicons-halflings-regular.ttf',
+    '/fonts/glyphicons-halflings-regular.woff',
+    '/fonts/glyphicons-halflings-regular.woff2',
+    '/images',
+    '/images/icons',
+    '/templates/dashboard.html',
+    '/templates/login.html',
+    'vendors/angular.js',
+    'vendors/angular-ui-router.min.js',
+    '/js/app.js',
+    'vendors/jquery.js',
+    'vendors/bootstrap.js',
+    'index.html'
+];
 
-this.oninstall = function(e) {
-  e.waitUntil(Promise.all([
-    updateContent(), updateApplication()
-  ]));
-};
-this.onactivate = function() {
-  setInterval(updateContent, 3*60*1000);
-};
+//Install stage sets up the cache-array to configure pre-cache content
+self.addEventListener('install', function(evt) {
+    console.log('The service worker is being installed.');
+    evt.waitUntil(precache().then(function() {
+        return self.skipWaiting();
+    }));
+});
 
-this.onfetch = function(e) {
-  var url = e.request.url;
-  var path = url.replace(location.origin, '');
-  var guidMatches = path.match(/^\/article\/([0-9]+)\/?$/);
-  var promise;
 
-  if (path === '/') {
-    promise = caches.match(new Request(api))
-      .then(function(response) {
-        return response.json();
-      }).then(function(stories) {
-        return new Response(templates.list(stories), { headers: { "Content-Type": "text/html" } });
-      });
-  } else if (guidMatches) {
-    promise = caches.match(new Request(api))
-      .then(function(response) {
-        return response.json();
-      }).then(function(stories) {
-        var story = stories.filter(function(story) {
-          return guidMatches[1] === story.guid;
-        });
-        var body = templates.article(story[0]);
-        return new Response(body, { headers: { "Content-Type": "text/html" } });
-      });
-  } else {
-    promise = caches.match(e.request);
-  }
-  e.respondWith(promise);
-};
+//allow sw to control of current page
+self.addEventListener('activate', function(event) {
+    console.log('[ServiceWorker] Claiming clients for current page');
+    return self.clients.claim();
 
-function updateContent() {
-  return caches.open('news-content-cache').then(function(cache) {
-    return cache.addAll([api]);
-  });
+});
+
+self.addEventListener('fetch', function(evt) {
+    console.log('The service worker is serving the asset.' + evt.request.url);
+    evt.respondWith(fromCache(evt.request).catch(fromServer(evt.request)));
+    evt.waitUntil(update(evt.request));
+});
+
+
+function precache() {
+    return caches.open(CACHE).then(function(cache) {
+        return cache.addAll(precacheFiles);
+    });
 }
 
-function updateApplication() {
-  return caches.open('news-static-cache').then(function(cache) {
-    return cache.addAll([
-      '/css/style.css',
-      '/js/app.js'
-    ]);
-  });
+
+function fromCache(request) {
+    //we pull files from the cache first thing so we can show them fast
+    return caches.open(CACHE).then(function(cache) {
+        return cache.match(request).then(function(matching) {
+            return matching || Promise.reject('no-match');
+        });
+    });
+}
+
+
+function update(request) {
+    //this is where we call the server to get the newest version of the 
+    //file to use the next time we show view
+    return caches.open(CACHE).then(function(cache) {
+        return fetch(request).then(function(response) {
+            return cache.put(request, response);
+        });
+    });
+}
+
+function fromServer(request) {
+    //this is the fallback if it is not in the cahche to go to the server and get it
+    return fetch(request).then(function(response) { return response })
 }
