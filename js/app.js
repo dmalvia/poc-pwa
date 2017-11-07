@@ -36,7 +36,7 @@ app.controller('rootCtrl', function($scope, $state) {
         label: false
     }
     appCtrl.config = {
-        "baseURI": "http://127.0.0.1:3000/bankapi/"
+        "baseURI": "https://bank-data.herokuapp.com/bankapi/"
     }
     appCtrl.serviceTypes = [{ id: "product", type: "Products", class: "prod box", icon: "gift" }, { id: "atm", type: "ATM's", class: "atm box", icon: "map-marker" }, { id: "branch", type: "Branches", class: "branch box", icon: "edit" }, { id: "label", type: "Labels", class: "labelbx box", icon: "stats" }];
     appCtrl.init = function() {
