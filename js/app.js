@@ -26,13 +26,18 @@ app.controller('rootCtrl', function($scope, $state) {
     appCtrl.config = {
         "baseURI": "http://127.0.0.1:3000/bankapi/"
     }
-    appCtrl.serviceTypes = [{ id: "product", type: "Products",class: "prod box",icon :"gift" }, { id: "atm", type: "ATM's",class: "atm box",icon:"map-marker" }, { id: "branch", type: "Branches",class: "branch box",icon:"edit" }, { id: "label", type: "Labels", class: "labelbx box",icon:"stats" }];
+    appCtrl.serviceTypes = [{ id: "product", type: "Products", class: "prod box", icon: "gift" }, { id: "atm", type: "ATM's", class: "atm box", icon: "map-marker" }, { id: "branch", type: "Branches", class: "branch box", icon: "edit" }, { id: "label", type: "Labels", class: "labelbx box", icon: "stats" }];
     appCtrl.init = function() {
         appCtrl.display = true;
         appCtrl.appCredentials = {
             username: 'admin',
             password: 'admin'
-        }
+        };
+        appCtrl.activeMenu = appCtrl.serviceTypes[0].type;
+    }
+
+    appCtrl.setActive = function(menuItem) {
+        appCtrl.activeMenu = menuItem
     }
 
     appCtrl.login = function() {
