@@ -1,3 +1,9 @@
+window.onload = function() {
+  var isOnLine = navigator.onLine;
+   if (!isOnLine) {
+      alert("No internet connection, page is served from cache!");
+   } 
+};
 var app = angular.module('pwa-app', ['ui.router']);
 app.config(function($stateProvider, $urlRouterProvider) {
 

@@ -1,0 +1,26 @@
+{
+  "name": "poc-pwa",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "~4.12.2",
+    "express-unless": "*"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dmalvia/poc-pwa.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dmalvia/poc-pwa/issues"
+  },
+  "homepage": "https://github.com/dmalvia/poc-pwa#readme"
+}
